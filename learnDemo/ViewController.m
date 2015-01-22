@@ -9,10 +9,16 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextField *flipsLabel;
+@property (nonatomic)int flipCount;
 @end
 
 @implementation ViewController
+
+- (void)setFlipCount:(int)flipCount{
+    _flipCount = flipCount;
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips:  %d",flipCount];
+}
 
 - (IBAction)touchCardButton:(UIButton *)sender {
     if ([sender.currentTitle length]) {
@@ -22,7 +28,7 @@
         [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"] forState:UIControlStateNormal];
         [sender setTitle:@"A♣︎" forState:UIControlStateNormal];
     }
-    
+    self.flipCount++;
 }
 
 
